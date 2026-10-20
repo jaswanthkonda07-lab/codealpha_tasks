@@ -122,13 +122,13 @@ MeetSphere is a browser-based video conferencing and collaboration application. 
 ### Live Demo and Documentation
 
 - **Live Demo:** [Open MeetSphere](https://meetsphere-wgr3.onrender.com/)
-- **Project:** [Open MeetSphere Project](./codeAlpha_Real_Time_Communication_App/)
-- **Documentation:** [Read MeetSphere Documentation](./codeAlpha_Real_Time_Communication_App/README.md)
+- **Project:** [Open MeetSphere Project](./codeAlpha_%20Real_Time_Communication_App/)
+- **Documentation:** [Read MeetSphere Documentation](./codeAlpha_%20Real_Time_Communication_App/README.md)
 
 ### Run MeetSphere Locally
 
 ```bash
-cd codeAlpha_Real_Time_Communication_App
+cd "codeAlpha_ Real_Time_Communication_App"
 npm install
 npm start
 ```
@@ -162,7 +162,7 @@ codealpha_tasks/
 │   ├── public/
 │   ├── server/
 │   └── ...
-└── codeAlpha_Real_Time_Communication_App/
+└── codeAlpha_ Real_Time_Communication_App/
     ├── README.md
     ├── package.json
     ├── public/

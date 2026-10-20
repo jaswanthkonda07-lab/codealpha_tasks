@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MeetSphere | Secure Video Meetings & Collaboration</title>
+  <meta name="description" content="MeetSphere: multi-user video calls, screen sharing, end-to-end encrypted chat and files, and a live whiteboard, built on WebRTC.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="bg"><i></i><i></i><i></i></div>
+
+  <!-- AUTH -->
+  <main id="authView" class="view auth-wrap">
+    <section class="hero">
+      <div class="logo big"><span class="orb"></span>MeetSphere</div>
+      <h1>Meet, share and sketch <span class="grad">together, securely.</span></h1>
+      <p class="lead">Multi-user HD video, screen sharing, a live whiteboard and end-to-end encrypted chat and files, right in your browser.</p>
+      <ul class="features">
+        <li>Peer-to-peer WebRTC video (DTLS-SRTP encrypted)</li>
+        <li>AES-256-GCM end-to-end encrypted chat &amp; file sharing</li>
+        <li>Real-time collaborative whiteboard</li>
+        <li>One-click screen sharing, no installs</li>
+      </ul>
+      <div class="mock-call" aria-hidden="true"><div class="mt"><b>A</b></div><div class="mt speak"><b>M</b></div><div class="mt"><b>S</b></div><div class="mt"><b>K</b></div><span class="mreact r1">👏</span><span class="mreact r2">🎉</span></div>
+    </section>
+    <form id="authForm" class="card auth-card" novalidate>
+      <div class="tabs"><button type="button" class="tab active" data-mode="login">Sign in</button><button type="button" class="tab" data-mode="register">Create account</button></div>
+      <input id="aName" placeholder="Full name" autocomplete="name" hidden>
+      <input id="aEmail" type="email" placeholder="Email address" autocomplete="email">
+      <input id="aPass" type="password" placeholder="Password (min 8 characters)" autocomplete="current-password">
+      <p id="aErr" class="error"></p>
+      <button id="aSubmit" class="btn primary block" type="submit">Sign in</button>
+    </form>
+  </main>
+
+  <!-- LOBBY -->
+  <main id="lobbyView" class="view lobby" hidden>
+    <header class="topbar"><div class="logo"><span class="orb"></span>MeetSphere</div><div class="top-right"><span id="lUser" class="muted"></span><button id="logoutBtn" class="btn ghost sm">Sign out</button></div></header>
+    <section class="lobby-grid">
+      <div class="preview-box">
+        <video id="preview" autoplay muted playsinline></video>
+        <div class="meter" title="Microphone level"><span>🎤</span><div class="meter-bar"><i id="meterFill"></i></div></div>
+        <p id="previewMsg" class="preview-msg"></p>
+      </div>
+      <div class="card lobby-card">
+        <h2>Ready to join?</h2>
+        <p class="muted">Create a new room or enter an existing room code.</p>
+        <label class="lbl" for="roomId">Room code</label>
+        <input id="roomId" placeholder="e.g. team-standup" maxlength="40" autocomplete="off">
+        <label class="lbl" for="passcode">Encryption passcode <span class="muted">(optional)</span></label>
+        <input id="passcode" type="password" placeholder="Everyone in the room must use the same passcode" autocomplete="off">
+        <p class="hint">🔒 Chat &amp; files are encrypted in your browser with a key derived from this passcode. The server never sees it.</p>
+        <div class="row"><button id="newRoom" class="btn ghost">🎲 Random code</button><button id="joinBtn" class="btn primary">Join meeting</button></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ROOM -->
+  <main id="roomView" class="view room" hidden>
+    <header class="room-top">
+      <div class="logo"><span class="orb"></span>MeetSphere</div>
+      <div class="room-info"><span id="roomLabel" class="pill"></span><span class="pill lock">🔒 E2E encrypted</span><span id="timer" class="pill" title="Meeting duration">00:00</span><span id="peerCount" class="pill">1 in call</span><button id="copyLink" class="btn ghost sm">Copy invite link</button></div>
+    </header>
+    <div class="room-body">
+      <section class="stage">
+        <div id="grid" class="grid"></div>
+        <div id="floaters" class="floaters"></div>
+        <div id="boardPanel" class="board-panel" hidden>
+          <div class="board-tools">
+            <input id="wbColor" type="color" value="#ffffff" title="Colour">
+            <input id="wbSize" type="range" min="2" max="24" value="4" title="Brush size">
+            <button id="wbPen" class="btn sm on">✏️ Pen</button>
+            <button id="wbErase" class="btn sm">🧽 Eraser</button>
+            <button id="wbClear" class="btn sm">🗑 Clear all</button>
+            <button id="wbSave" class="btn sm">⬇ Save PNG</button>
+            <button id="wbClose" class="btn sm ghost">✕ Close</button>
+          </div>
+          <div class="canvas-wrap"><canvas id="wb"></canvas></div>
+        </div>
+      </section>
+      <aside class="side">
+        <div class="side-tabs"><button class="stab active" data-tab="chat">💬 Chat<span id="unread" class="unread" hidden>0</span></button><button class="stab" data-tab="files">📎 Files</button><button class="stab" data-tab="people">👥 People</button></div>
+        <div id="chatPane" class="pane"><div id="msgs" class="msgs"></div>
+          <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Send an encrypted message…" maxlength="2000" autocomplete="off"><button class="btn primary sm">Send</button></form></div>
+        <div id="filesPane" class="pane" hidden>
+          <label id="drop" class="drop"><input id="fileInput" type="file" hidden><span>📁 Drop a file or click to share</span><small>Encrypted in your browser · max 25 MB · deleted after 2 h</small></label>
+          <div id="fileList" class="files"></div></div>
+        <div id="peoplePane" class="pane" hidden><div id="peopleList" class="people"></div></div>
+      </aside>
+    </div>
+    <footer class="controls">
+      <button id="micBtn" class="ctl" title="Mute / unmute">🎤<small>Mic</small></button>
+      <button id="camBtn" class="ctl" title="Camera on / off">📷<small>Camera</small></button>
+      <button id="screenBtn" class="ctl" title="Share your screen">🖥️<small>Share</small></button>
+      <button id="handBtn" class="ctl" title="Raise / lower hand">✋<small>Hand</small></button>
+      <div class="react-wrap"><button id="reactBtn" class="ctl" title="Send a reaction">😀<small>React</small></button><div id="reactMenu" class="react-menu" hidden><button data-e="👍">👍</button><button data-e="👏">👏</button><button data-e="❤️">❤️</button><button data-e="😂">😂</button><button data-e="🎉">🎉</button><button data-e="😮">😮</button></div></div>
+      <button id="boardBtn" class="ctl" title="Whiteboard">🎨<small>Board</small></button>
+      <button id="leaveBtn" class="ctl danger" title="Leave meeting">📞<small>Leave</small></button>
+    </footer>
+  </main>
+
+  <div id="toasts" aria-live="polite"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

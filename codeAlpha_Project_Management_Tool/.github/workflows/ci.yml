@@ -1,0 +1,15 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install
+      - name: Syntax check (server)
+        run: find server -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Syntax check (browser ES modules)
+        run: |
+          for f in public/js/*.js; do cp "$f" /tmp/check.mjs; node --check /tmp/check.mjs; done

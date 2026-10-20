@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo:7
+    volumes: [mongo-data:/data/db]
+  app:
+    build: .
+    ports: ["5000:5000"]
+    environment:
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo:27017/meetsphere
+      JWT_SECRET: change-me-in-production
+    depends_on: [mongo]
+volumes:
+  mongo-data:

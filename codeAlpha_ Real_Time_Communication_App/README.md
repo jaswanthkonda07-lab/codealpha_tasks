@@ -2,7 +2,7 @@
 
 A Trello/Asana-style tool where teams create projects, assign tasks on Kanban boards, and discuss work in per-task comment threads. Updates and notifications arrive instantly over WebSockets.
 
-**Live demo:** _add your Render URL here_ · Click **"Try the live demo"** on the login page for a pre-filled workspace.
+**Live demo:** https://taskflow-373b.onrender.com/
 
 ## Features
 - JWT authentication (bcrypt-hashed passwords, rate-limited auth endpoints)

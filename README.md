@@ -1,612 +1,160 @@
-CodeAlpha Tasks
+# CodeAlpha Full Stack Development Tasks
 
+This repository contains my completed projects for the CodeAlpha Full Stack Development Internship in the Full Stack Development domain.
 
+## Completed Tasks
 
-This repository contains my completed tasks for the CodeAlpha Full Stack Development Internship.
+| Task | Project | Live Demo |
+|---|---|---|
+| Task 3 | TaskFlow – Real-Time Collaborative Project Management | Available in the project files |
+| Task 4 | MeetSphere – Secure Real-Time Video Collaboration | [Open Live Demo](https://meetsphere-wgr3.onrender.com/ ) |
 
+---
 
+## Task 3: TaskFlow
 
-I completed two tasks from the assigned task list:
+### Real-Time Collaborative Project Management
 
+TaskFlow is a full-stack project management application inspired by tools such as Trello and Asana. It enables teams to create projects, manage Kanban boards, assign tasks, communicate through comments, and receive real-time updates.
 
+### Features
 
-1\.
+- User registration and login
+- JWT-based authentication
+- Secure password hashing using bcrypt
+- Group project creation and member invitations
+- Kanban board with drag-and-drop task management
+- Task assignment and priority management
+- Due dates and overdue task highlighting
+- Task descriptions, labels, and checklists
+- Threaded comments inside tasks
+- Real-time updates using Socket.io
+- Notifications for assignments, comments, and invitations
+- Project dashboard with progress statistics
+- Calendar view
+- Search and filtering
+- CSV export
+- Light and dark theme support
+- Responsive user interface
 
-Task 3 – Project Management Tool
+### Technology Stack
 
+- **Frontend:** HTML, CSS, and Vanilla JavaScript
+- **Backend:** Node.js, Express.js, and Socket.io
+- **Database:** MongoDB and Mongoose
+- **Security:** JWT, bcrypt, Helmet, CORS, and rate limiting
 
+### Project Documentation
 
-2\.
+- [Open TaskFlow Project](./codeAlpha_Project_Management_Tool/)
+- [Read TaskFlow Documentation](./codeAlpha_Project_Management_Tool/README.md)
 
-Task 4 – Real-Time Communication App
+### Run TaskFlow Locally
 
-
-
-Repository Information
-
-
-
-•
-
-Internship domain: Full Stack Development
-
-
-
-•
-
-Repository: codealpha\_tasks
-
-
-
-•
-
-Author: Jaswanth Konda
-
-
-
-Completed Tasks
-
-
-
-Task 3 – TaskFlow: Real-Time Collaborative Project Management
-
-
-
-TaskFlow is a full-stack project management application inspired by tools such as Trello and Asana. It allows teams to create projects, manage Kanban boards, assign tasks, communicate through task comments, and receive real-time updates.
-
-
-
-Main features
-
-
-
-•
-
-User registration and login using JWT authentication
-
-
-
-•
-
-Secure password hashing with bcrypt
-
-
-
-•
-
-Group projects and member invitations
-
-
-
-•
-
-Kanban board with drag-and-drop task movement
-
-
-
-•
-
-Task assignment, priority, due dates, descriptions, labels, and checklists
-
-
-
-•
-
-Task comments and real-time activity updates
-
-
-
-•
-
-Notifications for assignments, comments, and invitations
-
-
-
-•
-
-Dashboard with project progress and statistics
-
-
-
-•
-
-Calendar view, search, filters, CSV export, and light/dark theme
-
-
-
-•
-
-Real-time communication using Socket.io
-
-
-
-Technologies
-
-
-
-•
-
-Frontend: HTML, CSS, Vanilla JavaScript
-
-
-
-•
-
-Backend: Node.js, Express.js, Socket.io
-
-
-
-•
-
-Database: MongoDB and Mongoose
-
-
-
-•
-
-Security: JWT, bcrypt, Helmet, CORS, rate limiting
-
-
-
-Project folder
-
-
-
-codeAlpha\_Project\_Management\_Tool/
-
-
-
-For complete features, setup instructions, API documentation, and deployment details, see the TaskFlow README.
-
-
-
-Local setup
-
-
-
-Bash
-
-
-
-
-
-cd codeAlpha\_Project\_Management\_Tool
-
+```bash
+cd codeAlpha_Project_Management_Tool
 npm install
-
-
-
-
-
-
-
-Create a .env file from .env.example, configure MONGODB\_URI and JWT\_SECRET, and then start the application:
-
-
-
-Bash
-
-
-
-
-
 npm start
-
-
-
-
-
-
-
-The application runs at the local address shown in the terminal, normally http://localhost:4000.
-
-
-
-
-
-
-
-
-
-Task 4 – MeetSphere: Secure Real-Time Video Collaboration
-
-
-
-MeetSphere is a browser-based video conferencing and collaboration application. It supports multi-user video calls, screen sharing, encrypted chat and file sharing, and a collaborative whiteboard.
-
-
-
-Main features
-
-
-
-•
-
+Create a .env file using .env.example and configure the required variables:
+env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_jwt_secret
+The application normally runs at:
+text
+http://localhost:4000
+Task 4: MeetSphere
+Secure Real-Time Video Collaboration
+MeetSphere is a browser-based video conferencing and collaboration application. It supports multi-user video calls, screen sharing, encrypted chat and file sharing, and a live collaborative whiteboard.
+Features
 Multi-user video and audio calls using WebRTC
-
-
-
-•
-
-Screen sharing with track replacement
-
-
-
-•
-
+Screen sharing
 Microphone and camera controls
-
-
-
-•
-
 Speaking indicators and participant status
-
-
-
-•
-
-Collaborative whiteboard with drawing tools
-
-
-
-•
-
-Whiteboard history for users joining later
-
-
-
-•
-
-End-to-end encrypted chat and file sharing
-
-
-
-•
-
-JWT-based account registration and login
-
-
-
-•
-
+Collaborative whiteboard
+Drawing tools, eraser, colours, and brush-size controls
+Whiteboard history for late participants
+End-to-end encrypted chat
+Encrypted file sharing
+JWT-based user authentication
 Shareable room invitation links
-
-
-
-•
-
-Emoji reactions, raise-hand badges, participant pinning, and meeting timer
-
-
-
-Security and encryption
-
-
-
-•
-
+Emoji reactions
+Raise-hand functionality
+Participant pinning and spotlight controls
+Meeting timer and people panel
+Security and Encryption
 WebRTC media is protected using DTLS-SRTP
-
-
-
-•
-
-Chat messages and files are encrypted in the browser using AES-256-GCM
-
-
-
-•
-
+Chat messages and files use AES-256-GCM encryption
 Encryption keys are derived using PBKDF2-SHA256
-
-
-
-•
-
-Passwords are protected with bcrypt hashing
-
-
-
-•
-
-Signalling and API requests use HTTPS/WSS in production
-
-
-
-•
-
-JWT-authenticated sockets and room-scoped access controls are used
-
-
-
-Technologies
-
-
-
-•
-
+Passwords are protected using bcrypt
+Production communication uses HTTPS and WSS
+Socket connections are authenticated using JWT
+Room-scoped access control is implemented
+Upload limits and security headers are configured
+Technology Stack
 WebRTC
-
-
-
-•
-
 Socket.io
-
-
-
-•
-
 Node.js and Express.js
-
-
-
-•
-
 MongoDB and Mongoose
-
-
-
-•
-
 Web Crypto API
-
-
-
-•
-
 Canvas API
-
-
-
-•
-
-Vanilla JavaScript and CSS
-
-
-
-Project folder
-
-
-
-codeAlpha\_ Real\_Time\_Communication\_App/
-
-
-
-For complete features, setup instructions, security details, limitations, and deployment information, see the MeetSphere README.
-
-
-
-Live demo
-
-
-
-
-
-
-
-Open the MeetSphere live demo
-
-
-
-Local setup
-
-
-
+Vanilla JavaScript
+HTML and CSS
+Live Demo
+Open MeetSphere Live Demo
+Project Documentation
+Open MeetSphere Project
+Read MeetSphere Documentation
+Run MeetSphere Locally
 Bash
-
-
-
-
-
-cd "codeAlpha\_ Real\_Time\_Communication\_App"
-
+cd "codeAlpha_ Real_Time_Communication_App"
 npm install
-
-
-
-
-
-
-
-Create a .env file from .env.example, configure the required environment variables, and start the application:
-
-
-
-Bash
-
-
-
-
-
 npm start
-
-
-
-
-
-
-
-The application normally runs at http://localhost:5000.
-
-
-
-
-
-Note: Camera access, screen sharing, and some browser security features work most reliably over HTTPS. The deployed Render application provides HTTPS automatically.
-
-
-
-
-
-
-
-
-
-Repository Structure
-
-
-
-Plain Text
-
-
-
-
-
-codealpha\_tasks/
-
-├── README.md
-
-├── codeAlpha\_Project\_Management\_Tool/
-
-│   ├── README.md
-
-│   ├── package.json
-
-│   ├── public/
-
-│   ├── server/
-
-│   └── ...
-
-└── codeAlpha\_ Real\_Time\_Communication\_App/
-
-&#x20;   ├── README.md
-
-&#x20;   ├── package.json
-
-&#x20;   ├── public/
-
-&#x20;   ├── server/
-
-&#x20;   └── ...
-
-
-
-
-
-
-
-Each project folder contains its own detailed documentation, source code, configuration files, and setup instructions.
-
-
-
+The application normally runs at:
+text
+http://localhost:5000
+For camera access, screen sharing, and production WebRTC functionality, HTTPS is recommended.
 Deployment
-
-
-
-Both projects can be deployed using:
-
-
-
-•
-
-Render for hosting the Node.js applications
-
-
-
-•
-
-MongoDB Atlas for the production database
-
-
-
-Refer to the individual project README files for environment variables and deployment instructions.
-
-
-
-Important Security Notes
-
-
-
-•
-
-Do not commit .env files, passwords, API keys, database credentials, or private tokens.
-
-
-
-•
-
-Use .env.example as a template for local configuration.
-
-
-
-•
-
-Use a strong, unique JWT\_SECRET in production.
-
-
-
-•
-
-Configure production database access carefully.
-
-
-
+The MeetSphere application is deployed using Render:
+https://meetsphere-wgr3.onrender.com/
+MongoDB Atlas is used for cloud database hosting.
+Repository Structure
+text
+codealpha_tasks/
+│
+├── README.md
+│
+├── codeAlpha_Project_Management_Tool/
+│   ├── README.md
+│   ├── package.json
+│   ├── public/
+│   ├── server/
+│   └── ...
+│
+└── codeAlpha_ Real_Time_Communication_App/
+    ├── README.md
+    ├── package.json
+    ├── public/
+    ├── server/
+    └── ...
+Each project folder contains its own source code, configuration files, and detailed documentation.
+Security Notes
+Do not upload .env files to GitHub.
+Do not expose passwords, API keys, database credentials, or private tokens.
+Use .env.example as a configuration template.
+Use a strong and unique JWT_SECRET in production.
+Configure MongoDB access securely for production deployments.
 Learning Outcomes
-
-
-
-Through these projects, I gained practical experience with:
-
-
-
-•
-
+Through these projects, I gained practical experience in:
 Full-stack web application development
-
-
-
-•
-
-REST API design and backend development
-
-
-
-•
-
+REST API development
 MongoDB database integration
-
-
-
-•
-
 Authentication and authorization
-
-
-
-•
-
-Real-time communication with Socket.io and WebRTC
-
-
-
-•
-
-Web application security
-
-
-
-•
-
-Responsive frontend design
-
-
-
-•
-
-Deployment using Render and MongoDB Atlas
-
-
-
-Acknowledgement
-
-
-
+Real-time communication using Socket.io
+Peer-to-peer communication using WebRTC
+End-to-end encryption using the Web Crypto API
+Responsive frontend development
+Application security
+Cloud deployment using Render and MongoDB Atlas
+Author
+Jaswanth Konda
 Completed as part of the CodeAlpha Full Stack Development Internship.
-
-
-
-
-
